@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalNetTrigger : MonoBehaviour {
+public class GoalNetTrigger : MonoBehaviour
+{
 
-    private bool expectedCollider;
+    private Collider expectedCollider;
 
-    public void ExpectCollider(Collider collider) {
+    public void ExpectCollider(Collider collider)
+    {
         expectedCollider = collider;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (expectedCollider == other) {
-			ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
-			scoreKeeper.incremenetScore(2);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (expectedCollider == other)
+        {
+            ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
+            scoreKeeper.incremenetScore(2);
 
             MovePlayer movePlayer = FindObjectOfType<MovePlayer>();
             movePlayer.MoveToRandomPosition();
-		}
+        }
     }
 }

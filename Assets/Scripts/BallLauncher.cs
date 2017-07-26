@@ -19,6 +19,16 @@ public class BallLauncher : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1")) {
             held = Time.time;
+		}
+
+        if (Input.GetButton("Fire1")) {
+			float timeHeld = (Time.time - held);
+			print("Time held: " + timeHeld);
+
+			speedModifier = timeHeld / 5;
+			if (speedModifier > 0.3) {
+				speedModifier = 0.3f;
+			}
         }
 
         if (Input.GetButtonUp("Fire1")) {
@@ -33,18 +43,18 @@ public class BallLauncher : MonoBehaviour {
 	}
 
     private float GetBallSpeed() {
-        float timeHeld = (Time.time - held);
-		print("Time held: " + (Time.time - held));
+  //      float timeHeld = (Time.time - held);
+		//print("Time held: " + (Time.time - held));
 
-        speedModifier = timeHeld / 10;
-        if (speedModifier > 0.1) {
-         speedModifier = 0.1f;   
-        }
+        //speedModifier = timeHeld / 10;
+        //if (speedModifier > 0.3) {
+        // speedModifier = 0.3f;   
+        //}
 
-        // format to between 1 * 3
+        //// format to between 1 * 3
         float modifiedBallSpeed = ballSpeed * (1 + speedModifier);
 
-        print("Ball Speed: " + (modifiedBallSpeed));
+        print ("Ball Speed: " + (modifiedBallSpeed));
 
 		return modifiedBallSpeed;
     }

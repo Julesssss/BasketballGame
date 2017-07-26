@@ -11,7 +11,7 @@ public class BackboardTrigger : MonoBehaviour {
         Rigidbody rb = other.GetComponent<Rigidbody>();
 
         Vector3 vel = rb.velocity;
-        vel.x = (vel.x * 0.7f);
+        vel.x = (vel.x * 0.4f);
 
         rb.velocity = vel;
     }

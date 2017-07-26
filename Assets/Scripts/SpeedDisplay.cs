@@ -6,19 +6,29 @@ using UnityEngine.UI;
 public class SpeedDisplay : MonoBehaviour {
 
     BallLauncher ballLauncher;
+    Crosshair crosshair;
     Text text;
 
 	// Use this for initialization
 	void Start () {
         text = GetComponent<Text>();
         ballLauncher = FindObjectOfType<BallLauncher>();
+        crosshair = FindObjectOfType<Crosshair>();
+        crosshair.setSize(10);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         float sp = ballLauncher.GetModifiedSpeed();
         float percentage = (sp / 3) * 1000;
         int intPerc = (int)percentage;
         text.text = "Throw speed: " + intPerc;
-	}
+        crosshair.setSize(intPerc);
+    }
+
+    public void Reset() {
+        crosshair.setSize(10);   
+    }
+
 }

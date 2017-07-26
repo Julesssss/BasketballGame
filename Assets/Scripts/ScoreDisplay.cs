@@ -16,6 +16,11 @@ public class ScoreDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = "Score: " + scoreKeeper.score;
+        if (scoreKeeper.score < 10) {
+            text.text = " " + scoreKeeper.score;
+        } else {
+			text.text = "" + scoreKeeper.score;
+
+		}
 	}
 }

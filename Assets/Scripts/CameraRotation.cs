@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour {
 
+    [System.Serializable]
+    public class AngleLimit {
+        public float yMin, yMax;
+    }
+
+
     private float rotationSpeed = 5.0f;
+    float wrappedY = 0f;
+    public AngleLimit angleLimit = new AngleLimit();
+    private Camera camera;
+    private float yRotate;
+	private float xRotate;
 
-    // Use this for initialization
-    void Start () {
-        
+	// Use this for initialization
+	void Start () {
+        camera = GetComponentInChildren<Camera>();
     }
-    
+
     // Update is called once per frame
-    void Update () {
-        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed;
+    void Update()
+    {
+        yRotate = Mathf.Min(angleLimit.yMin, Mathf.Max(angleLimit.yMax, yRotate + (Input.GetAxis("Mouse Y") * rotationSpeed )));
+        camera.transform.localRotation = Quaternion.Euler(- yRotate, 0, 0);
 
-        transform.localRotation = Quaternion.Euler(0, mouseX, 0) * transform.localRotation;
-        Camera camera = GetComponentInChildren<Camera>();
-        camera.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0) * camera.transform.localRotation;
-    }
+        xRotate = (Input.GetAxis("Mouse X") * rotationSpeed);
+        transform.localRotation = Quaternion.Euler(0, xRotate, 0) * transform.localRotation;
 
+	}
+ 
 }

@@ -27,11 +27,12 @@ public class MovePlayer : MonoBehaviour
             HandleMovePlayer(Camera.main.transform.right);
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-            HandleMovePlayer(Camera.main.transform.forward);
+            HandleMovePlayer(gameObject.transform.forward);
         }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
-            HandleMovePlayer(- Camera.main.transform.forward);
+            HandleMovePlayer(- gameObject.transform.forward);
         }
+
     }
 
     void HandleMovePlayer(Vector3 direction) {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,13 +10,25 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+        setUp();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void setUp()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0) {
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+        } else {
+			Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            LoadNextScene();
+            //LoadNextScene();
         }
 
         if (timeTillNextLevel > 0) {
