@@ -6,13 +6,16 @@ public class BackboardTrigger : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        print("touched board!");
 
-        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (other.CompareTag ("Ball")) {
+			print("touched board!");
 
-        Vector3 vel = rb.velocity;
-        vel.x = (vel.x * 0.4f);
+			Rigidbody rb = other.GetComponent<Rigidbody>();
 
-        rb.velocity = vel;
+			Vector3 vel = rb.velocity;
+			vel.x = (vel.x * 0.4f);
+
+			rb.velocity = vel;
+        }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - ring
   - board
   - net
+  - Ball
   layers:
   - Default
   - TransparentFX

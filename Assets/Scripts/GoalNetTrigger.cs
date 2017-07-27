@@ -17,7 +17,7 @@ public class GoalNetTrigger : MonoBehaviour
         if (expectedCollider == other)
         {
             ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
-            scoreKeeper.incremenetScore(2);
+            scoreKeeper.incremenetScore();
 
             MovePlayer movePlayer = FindObjectOfType<MovePlayer>();
             movePlayer.MoveToRandomPosition();

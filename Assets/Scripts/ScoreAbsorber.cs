@@ -11,7 +11,7 @@ public class ScoreAbsorber : MonoBehaviour {
         ScoreKeeper oldKeeper = FindObjectOfType<ScoreKeeper>();
         score = 0;
         if (oldKeeper) {
-			score = oldKeeper.score;
+            score = oldKeeper.getScore();
 			Destroy(oldKeeper.gameObject);
         }
         if (score > 60) {

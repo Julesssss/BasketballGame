@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour {
 
-    public int score;
+    private int score;
+    private int pointValue = 2;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         score = 0;
         DontDestroyOnLoad(gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
-    public void incremenetScore(int points)
+    public void incremenetScore()
     {
-        score += points;
+        score += pointValue;
+    }
+
+    public void setPointValue(int points) {
+        pointValue = points;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
