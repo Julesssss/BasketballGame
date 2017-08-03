@@ -20,6 +20,6 @@ public class TimeRemainingDisplay : MonoBehaviour {
 	protected void Update()
 	{
         Decimal f = Math.Round((Decimal)levelManager.timeTillNextLevel, 1, MidpointRounding.AwayFromZero);
-        text.text = "Time: " + f;
+        text.text = "" + f;
 	}
 }

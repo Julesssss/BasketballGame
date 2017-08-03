@@ -5,7 +5,6 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour {
 
     private int score;
-    private int pointValue = 2;
 
     // Use this for initialization
     void Start()
@@ -14,13 +13,9 @@ public class ScoreKeeper : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void incremenetScore()
+    public void incremenetScore(int points)
     {
-        score += pointValue;
-    }
-
-    public void setPointValue(int points) {
-        pointValue = points;
+        score += points;
     }
 
     public int getScore() {

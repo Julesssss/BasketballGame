@@ -15,6 +15,7 @@ public class SpeedDisplay : MonoBehaviour {
         ballLauncher = FindObjectOfType<BallLauncher>();
         crosshair = FindObjectOfType<Crosshair>();
         crosshair.setSize(10);
+        text.text = "";
 	}
 
     // Update is called once per frame
@@ -23,7 +24,10 @@ public class SpeedDisplay : MonoBehaviour {
         float sp = ballLauncher.GetModifiedSpeed();
         float percentage = (sp / 3) * 1000;
         int intPerc = (int)percentage;
-        text.text = "Throw speed: " + intPerc;
+        if (intPerc > 0) {
+			text.text = "" + intPerc;
+
+		}
         crosshair.setSize(intPerc);
     }
 

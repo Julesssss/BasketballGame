@@ -16,11 +16,19 @@ public class GoalNetTrigger : MonoBehaviour
     {
         if (expectedCollider == other)
         {
-            ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
-            scoreKeeper.incremenetScore();
+            if (other.CompareTag("Ball")) {
+                BallState ball = other.GetComponent<BallState>();
+                print("POINTZ::: " + ball.getPointValue());
 
-            MovePlayer movePlayer = FindObjectOfType<MovePlayer>();
-            movePlayer.MoveToRandomPosition();
+				ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
+				scoreKeeper.incremenetScore(ball.getPointValue());
+
+				MovePlayer movePlayer = FindObjectOfType<MovePlayer>();
+				movePlayer.MoveToRandomPosition();
+
+            } else {
+                print("NOT BALL :/  --> " + other.tag);
+            }
         }
     }
 }

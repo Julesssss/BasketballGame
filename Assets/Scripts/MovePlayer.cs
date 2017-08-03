@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    private float nextFire = 0;
+    //private float nextFire = 0;
     private int fireRate = 0;
 	private int movementSpeed = 5;
 
@@ -32,7 +32,6 @@ public class MovePlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
             HandleMovePlayer(- gameObject.transform.forward);
         }
-
     }
 
     void HandleMovePlayer(Vector3 direction) {
@@ -44,18 +43,20 @@ public class MovePlayer : MonoBehaviour
 
         gameObject.transform.position = pos;
 
-        nextFire = (Time.deltaTime + fireRate);
+        //nextFire = (Time.deltaTime + fireRate);
     }
 
 	public void MoveToRandomPosition()
 	{
-		int xMove = Random.Range(0, 8) - 4;
-		int zMove = Random.Range(0, 8) - 4;
+        float xMove = Random.Range(0, 22) - 12;
+        float zMove = Random.Range(0, 17) - 7;
 
 		Vector3 pos = gameObject.transform.position;
-        pos.x = pos.x + xMove;
-		pos.z = pos.z + zMove;
+        pos.x = xMove;
+        pos.z = zMove;
 		gameObject.transform.position = pos;
+
+        PrintCurrentLocation();
 	}
 
     public void PrintCurrentLocation()

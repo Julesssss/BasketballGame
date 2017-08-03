@@ -8,11 +8,6 @@ public class BallLauncher : MonoBehaviour {
     public float ballSpeed;
     public float held;
     private float speedModifier;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,7 +30,15 @@ public class BallLauncher : MonoBehaviour {
             float heldModifier = Time.time - held;
 
 			GameObject instance = Instantiate(ballPrefab);
-			instance.transform.position = transform.position;
+            BallState bs = instance.GetComponent<BallState>();
+
+            if (OnEnterTwoPointArea.isInTwoPointArea()) {
+                bs.SetPointValue(2);
+            } else {
+                bs.SetPointValue(3);
+            }
+			
+            instance.transform.position = transform.position;
 			Rigidbody rb = instance.GetComponent<Rigidbody>();
             Camera camera = GetComponentInChildren<Camera>();
             rb.velocity = camera.transform.rotation * Vector3.forward * GetBallSpeed();
@@ -43,15 +46,6 @@ public class BallLauncher : MonoBehaviour {
 	}
 
     private float GetBallSpeed() {
-  //      float timeHeld = (Time.time - held);
-		//print("Time held: " + (Time.time - held));
-
-        //speedModifier = timeHeld / 10;
-        //if (speedModifier > 0.3) {
-        // speedModifier = 0.3f;   
-        //}
-
-        //// format to between 1 * 3
         float modifiedBallSpeed = ballSpeed * (1 + speedModifier);
 
         print ("Ball Speed: " + (modifiedBallSpeed));

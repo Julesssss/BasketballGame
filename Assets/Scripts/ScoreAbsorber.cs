@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreAbsorber : MonoBehaviour {
 
-    public int score;
+    int score = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +14,9 @@ public class ScoreAbsorber : MonoBehaviour {
             score = oldKeeper.getScore();
 			Destroy(oldKeeper.gameObject);
         }
-        if (score > 60) {
-            
-        }
+
+        HighScoreManager highScoreManager = FindObjectOfType<HighScoreManager>();
+        highScoreManager.SetScore(score);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

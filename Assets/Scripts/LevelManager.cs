@@ -47,4 +47,11 @@ public class LevelManager : MonoBehaviour {
 		int currentIndex = SceneManager.GetActiveScene().buildIndex;
 		SceneManager.LoadScene(currentIndex - 1);
 	}
+
+	public void saveName(String name)
+	{
+		print("Saving name: " + name);
+        PlayerPrefs.SetString("BestName", name);
+
+	}
 }

@@ -7,6 +7,8 @@ public class GameOverMessageDisplay : MonoBehaviour
 {
 
 	ScoreAbsorber scoreKeeper;
+    LevelManager levelManager;
+
 	Text text;
 
 	// Use this for initialization
@@ -14,18 +16,16 @@ public class GameOverMessageDisplay : MonoBehaviour
 	{
 		text = GetComponent<Text>();
 		scoreKeeper = FindObjectOfType<ScoreAbsorber>();
+        levelManager = FindObjectOfType<LevelManager>();
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-        if (scoreKeeper.score > 90) {
-            text.text = "AMAZING -- stop cheating tho";
-        } else if (scoreKeeper.score > 50) {
-            text.text = "You're nearly as good as Will";
-        } else if (scoreKeeper.score > 20) {
-			text.text = "Not bad...";
-        }
-    }
+        //text.text = "Enter your name...";
+
+   //     if (scoreKeeper.score > 90) {
+   //         text.text = "AMAZING -- stop cheating tho";
+   //     } else if (scoreKeeper.score > 50) {
+   //         text.text = "You're nearly as good as Will";
+   //     } else if (scoreKeeper.score > 20) {
+			//text.text = "Not bad...";
 
 }
